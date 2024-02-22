@@ -126,15 +126,54 @@
 //
 // You can assume that all inputs are valid integers.
 
-function roundToNext5(n){
-    let res = n
-    for (let i = n; i % 5 !== 0; i++){
-        res = i+1
+// function roundToNext5(n){
+//     let res = n
+//     for (let i = n; i % 5 !== 0; i++){
+//         res = i+1
+//     }
+//     return res
+// }
+//
+// console.log(roundToNext5(0))
+// console.log(roundToNext5(2))
+// console.log(roundToNext5(-14))
+
+
+// 6 kyu
+
+// Your task, is to create N×N multiplication table, of size provided in parameter.
+//
+//     For example, when given size is 3:
+//
+// 1 2 3
+// 2 4 6
+// 3 6 9
+// For the given example, the return value should be:
+//
+//     [[1,2,3],[2,4,6],[3,6,9]]
+
+multiplicationTable = function (size) {
+    let arr = []
+    for (let i = 0; i < size; i++) {
+        arr.push([])
+        if (i === 0) {
+            for (let j = 0; j < size; j++) {
+                arr[i].push(j + 1)
+            }
+        } else {
+            arr[i].push(i+1)
+        }
     }
-    return res
+    for (let i = 1; i < size; i++) {
+        for (let j = 1; j < size; j++) {
+            arr[i] = [...arr[i], arr[0][j] * arr[i][0]]
+        }
+    }
+    return arr
 }
 
-console.log(roundToNext5(0))
-console.log(roundToNext5(2))
-console.log(roundToNext5(-14))
 
+console.log(multiplicationTable(1))
+console.log(multiplicationTable(2))
+console.log(multiplicationTable(3))
+console.log(multiplicationTable(5))
