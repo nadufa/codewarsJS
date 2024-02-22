@@ -83,25 +83,58 @@
 //
 // † Note: the function is called firstNonRepeatingLetter for historical reasons, but your function should handle any Unicode character.
 
-function firstNonRepeatingLetter(str) {
-    let arr = str.toLowerCase().split('')
-    for (let i = 0; i < arr.length; i++) {
-        let isNotRepeat = true
-        for (let j = 0; j < arr.length; j++) {
-            if (i !== j && arr[i] === arr[j]) {
-                isNotRepeat = false
-                j = arr.length
-            }
-        }
-        if (isNotRepeat) {
-            return str[i]
-        }
+// function firstNonRepeatingLetter(str) {
+//     let arr = str.toLowerCase().split('')
+//     for (let i = 0; i < arr.length; i++) {
+//         let isNotRepeat = true
+//         for (let j = 0; j < arr.length; j++) {
+//             if (i !== j && arr[i] === arr[j]) {
+//                 isNotRepeat = false
+//                 j = arr.length
+//             }
+//         }
+//         if (isNotRepeat) {
+//             return str[i]
+//         }
+//     }
+//     return ''
+// }
+//
+// console.log(firstNonRepeatingLetter('a'))
+// console.log(firstNonRepeatingLetter('stress'))
+// console.log(firstNonRepeatingLetter('moonmen'))
+// console.log(firstNonRepeatingLetter('abcabc'))
+
+
+// 7 kyu
+
+// Given an integer as input, can you round it to the next (meaning, "greater than or equal") multiple of 5?
+//
+//     Examples:
+//
+//     input:    output:
+//     0    ->   0
+// 2    ->   5
+// 3    ->   5
+// 12   ->   15
+// 21   ->   25
+// 30   ->   30
+// -2   ->   0
+// -5   ->   -5
+// etc.
+//     Input may be any positive or negative integer (including 0).
+//
+// You can assume that all inputs are valid integers.
+
+function roundToNext5(n){
+    let res = n
+    for (let i = n; i % 5 !== 0; i++){
+        res = i+1
     }
-    return ''
+    return res
 }
 
-console.log(firstNonRepeatingLetter('a'))
-console.log(firstNonRepeatingLetter('stress'))
-console.log(firstNonRepeatingLetter('moonmen'))
-console.log(firstNonRepeatingLetter('abcabc'))
+console.log(roundToNext5(0))
+console.log(roundToNext5(2))
+console.log(roundToNext5(-14))
 
